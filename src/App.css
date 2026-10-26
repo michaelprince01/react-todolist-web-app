@@ -2,7 +2,7 @@
 .todo__wrapper {
   background-color: #ffffff;
   max-width: 800px;
-  margin: 60px auto;
+  margin: 20px auto;
   padding: 32px;
   border-radius: 10px;
 }
@@ -33,12 +33,19 @@
 /* taskform styles */
 .todo__form {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 5px;
-  padding: 5px 10px;
+  padding: 10px;
   border: 1px solid #d4e0f0;
   border-radius: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.todo__main-input {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
 }
 
 .input__icon {
@@ -56,12 +63,48 @@
   font-family: inherit;
 }
 
+.todo__form-options {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.todo__date-input,
+.todo__priority-input {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border: 1px solid #d4e0f0;
+  border-radius: 8px;
+  color: #6f83a8;
+}
+
+.todo__date-input input,
+.todo__priority-input select {
+  max-width: 100%;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #334155;
+  font-family: inherit;
+  font-size: x-small;
+}
+
+.todo__priority-input select,
+.todo__date-input input {
+  cursor: pointer;
+}
+
 .add__todo {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
   padding: 10px 15px;
+  margin-left: auto;
   border: none;
   border-radius: 10px;
   background-color: #315bff;
@@ -98,19 +141,21 @@
   font-family: inherit;
   cursor: pointer;
   font-size: 12px;
-}
-
-/* Selected filter */
-.filter__all {
-  background-color: #315bff;
-  color: #ffffff;
+  transition: 0.5s background ease-in;
 }
 
 /* Inactive filters */
+.filter__all,
 .filter__active,
 .filter__completed {
   background-color: #eaf0f8;
   color: #142957;
+}
+
+/* Selected filter */
+.filter__state {
+  background-color: #315bff;
+  color: #ffffff;
 }
 
 /* Count badges */
@@ -129,7 +174,7 @@
 }
 
 /* Count badge inside the selected filter */
-.filter__all .badge {
+.filter__state .badge {
   background-color: #ffffff;
   color: #315bff;
 }
@@ -328,4 +373,133 @@
   font-size: x-small;
   font-style: italic;
   text-align: right;
+}
+
+/* task edit styles */
+.todo__edit-form {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+}
+
+.todo__edit-title {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d4e0f0;
+  border-radius: 10px;
+  color: #142957;
+  font-family: inherit;
+  font-weight: 600;
+  outline: none;
+}
+
+.todo__edit-title--error {
+  border-radius: 10px 10px 0 0;
+  border-bottom-color: #fecaca;
+}
+
+.todo__error {
+  width: 100%;
+  padding: 6px 12px;
+  margin-top: -8px;
+  border: 1px solid #fecaca;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  background-color: #fff1f2;
+  color: #dc2626;
+  font-size: x-small;
+}
+
+.todo__edit-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 160px;
+  max-width: 100%;
+  padding: 0 10px;
+  border: 1px solid #d4e0f0;
+  border-radius: 10px;
+  background: #fff;
+  color: #6f83a8;
+}
+
+.todo__edit-date,
+.todo__edit-priority {
+  flex: 1;
+  width: 100%;
+  padding: 8px 0;
+  background: transparent;
+  border: none;
+  color: #142957;
+  font-family: inherit;
+  font-size: x-small;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Focus effect on the entire field */
+.todo__edit-field:focus-within,
+.todo__edit-title:focus {
+  border-color: #315bff;
+  box-shadow: 0 0 0 3px rgba(49, 91, 255, 0.1);
+}
+
+/* Align task row while editing */
+.todo__list:has(.todo__edit-form),
+.todo__list:has(.todo__edit-form) .todos {
+  align-items: flex-start;
+}
+
+/* save and cancel buttons styles */
+.todo__edit-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.todo__cancel-btn,
+.todo__save-btn {
+  padding: 8px 14px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: x-small;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.todo__cancel-btn {
+  border-color: #d4e0f0;
+  background: #ffffff;
+  color: #526581;
+}
+
+.todo__cancel-btn:hover {
+  background: #f1f4f9;
+  border-color: #c3d0e3;
+}
+
+.todo__save-btn {
+  background: #315bff;
+  color: #ffffff;
+}
+
+.todo__save-btn:hover {
+  background: #2448df;
+}
+
+.todo__cancel-btn:focus-visible,
+.todo__save-btn:focus-visible {
+  outline: 2px solid #315bff;
+  outline-offset: 2px;
 }
