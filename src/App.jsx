@@ -1,4 +1,4 @@
-import { SquareCheck, Sun } from 'lucide-react';
+import { Moon, SquareCheck, Sun } from 'lucide-react';
 import './App.css';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
@@ -9,6 +9,7 @@ import { useState } from 'react';
 function App() {
   const [todos, setTodos] = useState([]);
   const [filter, setFilter] = useState('all');
+  const [theme, setTheme] = useState('light');
 
   let filterTodo;
 
@@ -76,41 +77,57 @@ function App() {
   const activeTodos = todos.filter((todo) => !todo.isCompleted).length;
 
   return (
-    <div className='todo__wrapper'>
-      <header className='todo__header'>
-        <div className='header__content'>
-          <SquareCheck color='#315BFF' size={40} />
-          <div className='header__text-wrapper'>
-            <h1 className='header__text'>To-Do List</h1>
-            <small className='header__description'>
-              Stay organised. Get things done.
-            </small>
+    <div
+      className={`app__page ${theme === 'dark' ? 'theme__dark' : 'theme__light'}`}
+    >
+      <div className='todo__wrapper'>
+        <header className='todo__header'>
+          <div className='header__content'>
+            <SquareCheck color='#315BFF' size={40} />
+            <div className='header__text-wrapper'>
+              <h1 className='header__text'>To-Do List</h1>
+              <small className='header__description'>
+                Stay organised. Get things done.
+              </small>
+            </div>
           </div>
+          {theme === 'light' ? (
+            <Sun
+              color='#657a9e'
+              style={{ cursor: 'pointer' }}
+              onClick={() => setTheme('dark')}
+            />
+          ) : (
+            <Moon
+              color='#e2e8f0'
+              style={{ cursor: 'pointer' }}
+              onClick={() => setTheme('light')}
+            />
+          )}
+        </header>
+        <TaskForm addTodos={addTodos} />
+        <TaskFilter
+          allTodos={allTodos}
+          completedTodos={completedTodos}
+          activeTodos={activeTodos}
+          todos={todos}
+          setTodos={setTodos}
+          filter={filter}
+          setFilter={setFilter}
+        />
+        <div className='todo__container'>
+          {filterTodo.map((todo) => (
+            <TaskList
+              key={todo.id}
+              todo={todo}
+              toggleTodo={toggleTodo}
+              deleteTodo={deleteTodo}
+              editTodo={editTodo}
+            />
+          ))}
         </div>
-        <Sun color='#657a9e' style={{ cursor: 'pointer' }} />
-      </header>
-      <TaskForm addTodos={addTodos} />
-      <TaskFilter
-        allTodos={allTodos}
-        completedTodos={completedTodos}
-        activeTodos={activeTodos}
-        todos={todos}
-        setTodos={setTodos}
-        filter={filter}
-        setFilter={setFilter}
-      />
-      <div className='todo__container'>
-        {filterTodo.map((todo) => (
-          <TaskList
-            key={todo.id}
-            todo={todo}
-            toggleTodo={toggleTodo}
-            deleteTodo={deleteTodo}
-            editTodo={editTodo}
-          />
-        ))}
+        <Footer completedTodos={completedTodos} activeTodos={activeTodos} />
       </div>
-      <Footer completedTodos={completedTodos} activeTodos={activeTodos} />
     </div>
   );
 }

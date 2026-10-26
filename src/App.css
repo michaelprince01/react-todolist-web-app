@@ -1,3 +1,8 @@
+.theme__dark .todo__wrapper {
+  background-color: #1e293b;
+  color: #e2e8f0;
+}
+
 /* app__styles */
 .todo__wrapper {
   background-color: #ffffff;
@@ -502,4 +507,131 @@
 .todo__save-btn:focus-visible {
   outline: 2px solid #315bff;
   outline-offset: 2px;
+}
+
+/* dark mode: main text */
+.theme__dark .todo__wrapper {
+  background-color: #1e293b;
+  color: #e2e8f0;
+}
+
+.theme__dark .header__text,
+.theme__dark .todo__title,
+.theme__dark .todo__edit-title,
+.theme__dark .todo__edit-date,
+.theme__dark .todo__edit-priority {
+  color: #e2e8f0;
+}
+
+.theme__dark .header__description,
+.theme__dark .input__icon,
+.theme__dark .todo__date,
+.theme__dark .todo__priority,
+.theme__dark .todo__motivation {
+  color: #94a3b8;
+}
+
+/* Form */
+.theme__dark .todo__form,
+.theme__dark .todo__date-input,
+.theme__dark .todo__priority-input,
+.theme__dark .todo__edit-field,
+.theme__dark .todo__edit-title {
+  border-color: #475569;
+}
+
+.theme__dark .todo__edit-title {
+  background-color: #1e293b;
+  color: #e2e8f0;
+  border-color: #475569;
+}
+
+.theme__dark .todo__input,
+.theme__dark .todo__date-input input,
+.theme__dark .todo__priority-input select,
+.theme__dark .todo__edit-date,
+.theme__dark .todo__edit-priority {
+  color: #e2e8f0;
+}
+
+/* Task container and rows */
+.theme__dark .todo__container {
+  border-color: #475569;
+  box-shadow: none;
+}
+
+.theme__dark .todo__list {
+  border-bottom-color: #334155;
+}
+
+.theme__dark .todo__list:hover {
+  background-color: #334155;
+}
+
+/* Filters and badges */
+.theme__dark .filter__all,
+.theme__dark .filter__active,
+.theme__dark .filter__completed {
+  background-color: #334155;
+  color: #e2e8f0;
+}
+
+.theme__dark .filter__state {
+  background-color: #315bff;
+  color: #ffffff;
+}
+
+.theme__dark .badge {
+  background-color: #475569;
+  color: #e2e8f0;
+}
+
+.theme__dark .filter__state .badge {
+  background-color: #ffffff;
+  color: #315bff;
+}
+
+/* Edit controls */
+.theme__dark .todo__edit {
+  background-color: #334155;
+  color: #cbd5e1;
+}
+
+.theme__dark .todo__edit:hover {
+  background-color: #475569;
+  color: #93c5fd;
+}
+
+.theme__dark .todo__cancel-btn {
+  background-color: #334155;
+  border-color: #475569;
+  color: #e2e8f0;
+}
+
+.theme__dark .todo__cancel-btn:hover {
+  background-color: #475569;
+}
+
+.theme__dark .todo__edit-field {
+  background-color: #1e293b;
+}
+
+/* Keep the completed-task text readable */
+.theme__dark .todo__list:has(.todo__complete-btn:checked) .todo__title {
+  color: #94a3b8;
+}
+
+/* Dark theme: normal and edit priority dropdowns */
+.theme__dark .todo__priority-input select,
+.theme__dark .todo__edit-priority {
+  background-color: #1e293b;
+  color: #e2e8f0;
+  border-color: #475569;
+}
+
+/* Dark theme: dropdown options */
+.theme__dark .todo__priority-input select option,
+.theme__dark .todo__edit-priority option {
+  background-color: #1e293b;
+  color: #e2e8f0;
 }

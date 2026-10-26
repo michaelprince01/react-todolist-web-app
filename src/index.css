@@ -10,3 +10,19 @@ body {
   font-family: 'Inter', sans-serif;
   background-color: #eaf0f8;
 }
+
+.app__page {
+  min-height: 100vh;
+  padding: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.theme__light {
+  background-color: #eaf0f8;
+  color: #142957;
+}
+
+.theme__dark {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
